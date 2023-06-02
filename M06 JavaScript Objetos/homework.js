@@ -128,10 +128,11 @@ function pasarUsuarioAPremium(objetoMuchosUsuarios) {
   // Define esta propiedad de todos los usuarios como true.
   // Retornar el arreglo.
   // Tu código:
-  return objetoMuchosUsuarios.map(usuario => {
-   return { ...usuario, esPremium: true };
- });
 
+  objetoMuchosUsuarios.map(
+  (usuario)=>{ usuario.esPremium=true;});
+  return objetoMuchosUsuarios;
+  
 }
 
 function sumarLikesDeUsuario(objetoUsuario) {
@@ -140,6 +141,15 @@ function sumarLikesDeUsuario(objetoUsuario) {
   // Cada post posee una propiedad llamada "likes". Esta propiedad es un número.
   // Debes sumar los likes de todos los post y retornar el resultado.
   // Tu código:
+  var posteos= objetoUsuario.posts;
+  var suma=0;
+  posteos.map(
+    (post) => {
+      suma =suma +  post.likes;
+    }
+  );
+  return suma;
+  
 }
 
 function agregarMetodoCalculoDescuento(objetoProducto) {
@@ -153,7 +163,13 @@ function agregarMetodoCalculoDescuento(objetoProducto) {
   // PorcentajeDeDescuento ---> 0.2
   // Precio final ---> 8
   // Tu código:
+    objetoProducto.calcularPrecioDescuento = function() {
+    var precioDescuento = this.precio * this.porcentajeDeDescuento;
+    var precioFinal = this.precio - precioDescuento;
+    return precioFinal;
+  };
 }
+
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
 module.exports = {
